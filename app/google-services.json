@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1095606226990-o027d5s9pkv0f27grp8106bmiqr2lshq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yrails.travelup",
+            "certificate_hash": "b2b72729743a581d5861e6e58b2b0e9a974fc540"
+          }
+        },
+        {
           "client_id": "1095606226990-ajitqu7rja0ecade5uhrsbbqlqivqar0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
