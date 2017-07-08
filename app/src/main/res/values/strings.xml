@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Travelup</string>
+
+    <string name="web_client_id">1095606226990-9inai5nn5qhtdj1gj63174a6p9qamfph.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">476531672700564</string>
+    <string name="fb_login_protocol_scheme">fb476531672700564</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_search">Search</string>
+
+    <string name="type_your_post">내용을 입력하세요.</string>
+    <string name="type_your_comment">댓글을 입력하세요.</string>
+
+    <string-array name="category_arrays">
+        <item>한국</item>
+        <item>일본</item>
+        <item>대만</item>
+        <item>홍콩 / 마카오</item>
+        <item>싱가포르</item>
+        <item>유럽</item>
+        <item>미국 / 캐나다</item>
+        <item>호주 / 뉴질랜드</item>
+        <item>아시아</item>
+        <item>아메리카</item>
+        <item>아프리카</item>
+    </string-array>
+</resources>

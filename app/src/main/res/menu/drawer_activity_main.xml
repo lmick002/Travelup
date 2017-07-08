@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all"
+            android:icon="@drawable/category_world"
+            android:checked="true"
+            android:title="전세계" />
+        <item
+            android:id="@+id/nav_korea"
+            android:icon="@drawable/category_korea"
+            android:title="한국" />
+        <item
+            android:id="@+id/nav_japan"
+            android:icon="@drawable/category_japan"
+            android:title="일본" />
+        <item
+            android:id="@+id/nav_taiwan"
+            android:icon="@drawable/category_taiwan"
+            android:title="대만" />
+        <item
+            android:id="@+id/nav_hongma"
+            android:icon="@drawable/category_hongma"
+            android:title="홍콩 / 마카오" />
+        <item
+            android:id="@+id/nav_singapore"
+            android:icon="@drawable/category_singapore"
+            android:title="싱가포르" />
+        <item
+            android:id="@+id/nav_europe"
+            android:icon="@drawable/category_europe"
+            android:title="유럽" />
+        <item
+            android:id="@+id/nav_usacanada"
+            android:icon="@drawable/category_usacanada"
+            android:title="미국 / 캐나다" />
+        <item
+            android:id="@+id/nav_oceania"
+            android:icon="@drawable/category_oceania"
+            android:title="호주 / 뉴질랜드" />
+        <item
+            android:id="@+id/nav_asia"
+            android:icon="@drawable/category_asia"
+            android:title="아시아" />
+        <item
+            android:id="@+id/nav_south_america"
+            android:icon="@drawable/category_south_america"
+            android:title="아메리카" />
+        <item
+            android:id="@+id/nav_africa"
+            android:icon="@drawable/category_africa"
+            android:title="아프리카" />
+    </group>
+
+    <group
+        android:id="@+id/menu_etc"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_menu_account"
+            android:title="프로필" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="로그아웃" />
+    </group>
+</menu>

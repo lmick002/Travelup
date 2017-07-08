@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1095606226990",
+    "firebase_url": "https://travelup-7b133.firebaseio.com",
+    "project_id": "travelup-7b133",
+    "storage_bucket": "travelup-7b133.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095606226990:android:c557e53fb774cc64",
+        "android_client_info": {
+          "package_name": "com.yrails.travelup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095606226990-ajitqu7rja0ecade5uhrsbbqlqivqar0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yrails.travelup",
+            "certificate_hash": "554149f656ca5d33876d568dcc21e7c689ed52ba"
+          }
+        },
+        {
+          "client_id": "1095606226990-9inai5nn5qhtdj1gj63174a6p9qamfph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjhjONB9eudeEepJmbFzpgxt2AzC6zr3w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095606226990-9inai5nn5qhtdj1gj63174a6p9qamfph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
