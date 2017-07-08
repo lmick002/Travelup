@@ -141,7 +141,7 @@ class PostCreateDialog : DialogFragment(), View.OnClickListener, AdapterView.OnI
     }
 
     private fun datePicker() {
-        DatePickerDialog(activity, mDateListener, meetYear, meetMonth, meetDay).show()
+        DatePickerDialog(activity, mDateListener, meetYear, meetMonth - 1, meetDay).show()
     }
 
     private fun timePicker() {
