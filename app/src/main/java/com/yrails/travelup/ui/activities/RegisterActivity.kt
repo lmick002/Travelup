@@ -6,14 +6,15 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import com.facebook.*
-import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -24,8 +25,10 @@ import com.yrails.travelup.utils.FirebaseUtils
 
 
 class RegisterActivity : BaseActivity(), View.OnClickListener {
-    private var callbackManager: CallbackManager? = null
-    private var credential: AuthCredential? = null
+    private var mGso: GoogleSignInOptions? = null
+    private var mGoogleApiClient: GoogleApiClient? = null
+    private var mCallbackManager: CallbackManager? = null
+    private var mAuthCredential: AuthCredential? = null
     private var mProgressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +36,16 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_register)
         findViewById(R.id.sign_in_google).setOnClickListener(this)
         findViewById(R.id.sign_in_facebook).setOnClickListener(this)
+
+        mGso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
+                .requestEmail()
+                .build()
+
+        mGoogleApiClient = GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, mGso!!)
+                .build()
     }
 
     override fun onClick(v: View) {
@@ -49,10 +62,10 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun signInFacebook() {
-        callbackManager = CallbackManager.Factory.create()
+        mCallbackManager = CallbackManager.Factory.create()
         val loginButton = findViewById(R.id.sign_in_facebook) as LoginButton
         loginButton.setReadPermissions("email", "public_profile")
-        loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+        loginButton.registerCallback(mCallbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 mAuth = FirebaseAuth.getInstance()
                 handleFacebookAccessToken(loginResult.accessToken)
@@ -67,8 +80,8 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun handleFacebookAccessToken(token: AccessToken) {
-        credential = FacebookAuthProvider.getCredential(token.token)
-        mAuth!!.signInWithCredential(credential!!).addOnCompleteListener(this) { task ->
+        mAuthCredential = FacebookAuthProvider.getCredential(token.token)
+        mAuth!!.signInWithCredential(mAuthCredential!!).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
                 val request = GraphRequest.newMeRequest(token) { json, response ->
                     if (response.error == null) {
@@ -114,7 +127,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                     dismissProgressDialog()
                 }
             } else {
-                callbackManager!!.onActivityResult(requestCode, resultCode, data)
+                mCallbackManager!!.onActivityResult(requestCode, resultCode, data)
                 dismissProgressDialog()
             }
         } else {
@@ -123,8 +136,9 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
-        credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        mAuth!!.signInWithCredential(credential!!).addOnCompleteListener(this) { task ->
+        Log.d("TAG", "firebaseAuthWithGoogle:" + account.getId())
+        mAuthCredential = GoogleAuthProvider.getCredential(account.idToken, null)
+        mAuth!!.signInWithCredential(mAuthCredential!!).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
                 FirebaseUtils.getUserRef(mAuth!!.currentUser!!.uid).child("email").setValue(account.email)
                 FirebaseUtils.getUserRef(mAuth!!.currentUser!!.uid).child("user").setValue(account.displayName)
