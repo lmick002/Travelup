@@ -367,7 +367,7 @@ class PostActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private class CommentHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CommentHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         internal var commentLayout = itemView.findViewById(R.id.layout_comment) as LinearLayout
         internal var commentUserImageView = itemView.findViewById(R.id.iv_comment_user) as ImageView
         internal var commentUserTextView = itemView.findViewById(R.id.tv_comment_user) as TextView
