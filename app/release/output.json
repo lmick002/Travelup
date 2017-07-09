@@ -6,7 +6,7 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 6
+      "versionCode": 7
     },
     "outputFile": {
       "path": "/Users/pw486/Dropbox/Projects/Travelup/app/release/app-release.apk"
