@@ -1,1 +1,19 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":5},"outputFile":{"path":"/Users/pw486/Dropbox/Projects/Travelup/app/release/app-release.apk"},"properties":{"packageId":"com.yrails.travelup","split":""}}]
+[
+  {
+    "outputType": {
+      "type": "APK"
+    },
+    "apkInfo": {
+      "type": "MAIN",
+      "splits": [],
+      "versionCode": 6
+    },
+    "outputFile": {
+      "path": "/Users/pw486/Dropbox/Projects/Travelup/app/release/app-release.apk"
+    },
+    "properties": {
+      "packageId": "com.yrails.travelup",
+      "split": ""
+    }
+  }
+]

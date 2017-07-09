@@ -14,16 +14,14 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.MutableData
-import com.google.firebase.database.Transaction
 import com.yrails.travelup.R
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     protected var mFirebaseUser: FirebaseUser? = null
     protected var mAuth: FirebaseAuth? = null
+    protected var mGso: GoogleSignInOptions? = null
+    protected var mGoogleApiClient: GoogleApiClient? = null
     private var mProgressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +29,16 @@ open class BaseActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFaile
 
         mAuth = FirebaseAuth.getInstance()
         if (mAuth != null) mFirebaseUser = mAuth!!.currentUser
+
+        mGso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
+                .requestEmail()
+                .build()
+
+        mGoogleApiClient = GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, mGso!!)
+                .build()
     }
 
     protected open fun showProgressDialog() {
@@ -54,7 +62,7 @@ open class BaseActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFaile
     protected fun signOut() {
         mAuth!!.signOut()
         LoginManager.getInstance().logOut()
-//        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback { }
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback { }
     }
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
