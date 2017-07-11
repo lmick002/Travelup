@@ -6,10 +6,10 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 7
+      "versionCode": 8
     },
     "outputFile": {
-      "path": "/Users/pw486/Dropbox/Projects/Travelup/app/release/app-release.apk"
+      "path": "/Users/pw486/Downloads/travelup/app/release/app-release.apk"
     },
     "properties": {
       "packageId": "com.yrails.travelup",
