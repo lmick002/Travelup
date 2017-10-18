@@ -2,14 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'TravelupKey'
-            keyPassword '960407TT'
-            storeFile file('/Users/pw486/Dropbox/Life/TravelupKey')
-            storePassword 'Younha*Night'
-        }
-    }
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
     defaultConfig {
